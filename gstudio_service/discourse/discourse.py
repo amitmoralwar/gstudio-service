@@ -97,6 +97,7 @@ PAGE_GET =(requests.get, "/t/{id}.json", None)
 HEADERS = {"Content-Type": "multipart/form-data" }
 
 MESSAGE_GET = (requests.get, "/posts", None)
+MESSAGE_POST = (requests.post, "/posts", None)
 
 UPLOAD_FILE = (requests.post, "/uploads.json", None)
 
@@ -511,7 +512,7 @@ class OwnerList(UserList):
 		return GROUP_OWNERS_REMOVE
 
 
-class Group(ForumObject):
+class Group(object):
 
 	# def __init__(self, api, params):
 	# 	super(Group, self).__init__(api)
@@ -528,6 +529,9 @@ class Group(ForumObject):
 	
 	# owners = property(lambda s: s.__owners, 
 	# 	lambda s,v: s.__owners.replace_all(v))
+
+	def __init__(self,params):
+		self.params = params
 
 	default_group_params = {
     "group[automatic]": True,
@@ -850,6 +854,9 @@ class Discourse(object):
 
 	def get_message(self,params,type):
 		return self.request(*MESSAGE_GET,params=params,type=type)
+
+	def create_message(self,params,type):
+		return self.request(*MESSAGE_POST,params=params,type=type)
 
 	def upload_file(self,params,type):
 		return self.request(*UPLOAD_FILE,params=params,type=type)
