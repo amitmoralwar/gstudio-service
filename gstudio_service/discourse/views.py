@@ -2,24 +2,36 @@ from django.shortcuts import render
 from discourse.discourse import *
 from django.http import HttpResponse
 from gstudio_service.settings import *
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
 
 # Create your views here.
 api = Discourse(DISCOURSE_URL, DISCOURSE_USERNAME, DISCOURSE_API_KEY)
 
 # Basic CRUD operation of Group
 def get_groups(request):
+	print("getttttttttttttttttttttttttttttttt")
 	return HttpResponse(api.groups("group"))
 
 def get_group(request):
 	return HttpResponse(api.group("staff","group"))
 
+@api_view(['POST'])
 def add_group(request):
-	return HttpResponse(api.add_group({"group[name]":"TestGroup1","group[public_admission]":"false"},"group"))
+	print ("---------------- add_group-------------------------------")
+	print(request.data)
+	group_name = request.data['group_name']
+	# name = request.POST.get("name")
+	return HttpResponse(api.add_group({"group[name]":group_name,"group[public_admission]":"false"},"group"))
 
 def update_group(request):
-	return HttpResponse(api.update_group({"group[name]":"TestGroup","group[title]":"Group Title"},"group"))
+	print ("---------------- up_group-------------------------------")
+	group_name = request.data['group_name']
+	return HttpResponse(api.update_group({"group[name]":"TestGroup1","group[title]":"Group Title"},"group"))
 
 def delete_group(request):
+	print ("---------------- del_group-------------------------------")
+	group_name = request.data['group_name']
 	return HttpResponse(api.delete_group({"group[name]":"TestGroup"},"group"))
 
 # Basic CRUD operation of Pages
