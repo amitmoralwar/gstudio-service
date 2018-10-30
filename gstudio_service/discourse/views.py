@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from gstudio_service.settings import *
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
+from gnowdb.views import *
+
 
 # Create your views here.
 api = Discourse(DISCOURSE_URL, DISCOURSE_USERNAME, DISCOURSE_API_KEY)
@@ -21,8 +23,13 @@ def add_group(request):
 	print ("---------------- add_group-------------------------------")
 	print(request.data)
 	group_name = request.data['group_name']
+	discourse_group = api.add_group({"group[name]":group_name,"group[public_admission]":"false"},"group")
+	discourse_group = discourse_group.json()
+	print (discourse_group)	
+	gnowdb_functions.create_instance_of_group(discourse_group)
 	# name = request.POST.get("name")
-	return HttpResponse(api.add_group({"group[name]":group_name,"group[public_admission]":"false"},"group"))
+	# return HttpResponse(api.add_group({"group[name]":group_name,"group[public_admission]":"false"},"group"))
+	return HttpResponse('Suceess')
 
 def update_group(request):
 	print ("---------------- up_group-------------------------------")
