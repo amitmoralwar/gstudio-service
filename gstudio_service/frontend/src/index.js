@@ -7,7 +7,10 @@ import DjangoCSRFToken from 'django-react-csrftoken'
 
 import App from './App';
 import registerServiceWorker from './serviceWorker';
+import axios from "axios";
 
+window.axios = axios;
+window.token = localStorage.getItem("token");
 
 
 ReactDOM.render(

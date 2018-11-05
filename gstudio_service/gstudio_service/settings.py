@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+# Application definition`7y 
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,9 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+    'frontend'
 ]
 
 MIDDLEWARE = [
+
+    'corsheaders.middleware.CorsMiddleware', # new
+    'django.middleware.common.CommonMiddleware', # new
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -81,6 +86,11 @@ DATABASES = {
 }
 
 
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000'
+)
+
+
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -119,8 +129,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-DISCOURSE_API_KEY = ""
+DISCOURSE_API_KEY = "ab0e348b571633684260d38c20edc21e6e545a78f41372dde0dae25c5089853c"
 
-DISCOURSE_USERNAME = ""
+DISCOURSE_USERNAME = "mahesh"
 
-DISCOURSE_URL = ""
+DISCOURSE_URL = "http://discourse.glab.com/"
+
+# DISCOURSE_API_KEY = "e6db637fa0206f4a04412062cb4f5ce56664a7059583f040d704e350d52ce3e5"
+# DISCOURSE_USERNAME = "Siddhu_Dhangar"
+# DISCOURSE_URL = "https://t2.metastudio.org"
+
+CORS_ORIGIN_ALLOW_ALL = True   
+
+# CSRF_COOKIE_SECURE = False  
+# CSRF_COOKIE_NAME = "XSRF-TOKEN"

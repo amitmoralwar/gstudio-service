@@ -30,16 +30,20 @@ def add_group(request):
 	# name = request.POST.get("name")
 	# return HttpResponse(api.add_group({"group[name]":group_name,"group[public_admission]":"false"},"group"))
 	return HttpResponse('Suceess')
-
+@api_view(['PUT'])
 def update_group(request):
 	print ("---------------- up_group-------------------------------")
 	group_name = request.data['group_name']
-	return HttpResponse(api.update_group({"group[name]":"TestGroup1","group[title]":"Group Title"},"group"))
+	return HttpResponse(api.update_group({"group[name]":group_name},"group"))
 
+@api_view(['POST'])
 def delete_group(request):
 	print ("---------------- del_group-------------------------------")
+	print(request.data)
+	# group_name = request.data['group_name']
 	group_name = request.data['group_name']
-	return HttpResponse(api.delete_group({"group[name]":"TestGroup"},"group"))
+
+	return HttpResponse(api.delete_group({"group[name]":group_name},"group"))
 
 # Basic CRUD operation of Pages
 
