@@ -12,7 +12,7 @@ api = Discourse(DISCOURSE_URL, DISCOURSE_USERNAME, DISCOURSE_API_KEY)
 
 # Basic CRUD operation of Group
 def get_groups(request):
-	print("getttttttttttttttttttttttttttttttt")
+	
 	return HttpResponse(api.groups("group"))
 
 def get_group(request):

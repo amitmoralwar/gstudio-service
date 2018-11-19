@@ -39,18 +39,16 @@ class gnowdb_functions():
 
     @staticmethod
     def create_instance_of_group(params=None):
-        print ("=====================================")
-        print (params)
+
         if params:
             discourse_id = params.get("basic_group").get("id")
             discourse_name = params.get("basic_group").get("name")
         else:
             return False
-        print (params)
-        print (discourse_id)
-        data = {"className": "groups", "nodeList": [
+
+        data = {"className": "Grps", "nodeList": [
             {"discourse_id": discourse_id, "discourse_group_name": discourse_name}]}
         data = json.dumps(data)
         response = requests.post(
-            'http://localhost:3001/api/gneo/createNodeClassInstances', headers=headers, data=data)
+            'http://localhost:3001/api/gneo/createNodeClassInstances', headers=headers, data=data, auth=('admin', ''))
         return True
