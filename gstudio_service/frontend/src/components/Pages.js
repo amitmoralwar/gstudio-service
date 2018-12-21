@@ -14,7 +14,32 @@ class Pages extends Component {
     						Pages
     					</div>
     					<div className="card-body">
-    					
+    			            <h2>Overview</h2>
+{/*                            <p>Mauris sem velit, vehicula eget sodales vitae,
+                            rhoncus eget sapiennnnn:</p>*/}
+                            <form action="#">		
+                                <label for="page_title">Page Title:</label>&emsp;
+                                <input type="text"></input><br/><br/>
+                                <label for="desc">Select Topics:</label>
+                                
+                                  <div class="dropdown">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                      Select Topics
+                                    </button>
+                                    <div class="dropdown-menu">
+                                      <a class="dropdown-item" href="#">Physics</a>
+                                      <a class="dropdown-item active" href="#">Mathematics</a>
+                                      <a class="dropdown-item disabled" href="#">Chemistry</a>
+                                    </div>
+                                  </div>
+
+                                <br/>
+                                <label for="desc">Description:</label>&emsp;
+                                <textarea class="form-control" rows="5" id="comment"></textarea><br/><br/>
+                                <button type="button" class="btn">Cancel</button>&emsp;&emsp;
+                                <button type="button" class="btn btn-primary">Save and Continue</button>
+                            </form>
+
     					</div> 
     					<div className="card-footer">
     						footer

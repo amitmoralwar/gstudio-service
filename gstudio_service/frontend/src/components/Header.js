@@ -31,7 +31,7 @@ class Header extends Component {
                           <i class='fas fa-chalkboard-teacher' style='font-size:36px'></i><a href=''>Courses</a><br>
                           <i class='fas fa-file-alt' style='font-size:36px'></i><a href=''>Blogs</a>&emsp; &emsp; &emsp; &emsp;
                           <i class='fas fa-boxes' style='font-size:36px'></i><a href=''>Resources</a><br>
-                          <i class='far fa-file-alt' style='font-size:36px'></i><a href=''>Pages</a>">
+                          <i class='far fa-file-alt' style='font-size:36px'></i><a href='http://172.21.0.2:3000/pages#'>Pages</a>">
                           <img src ={grid} alt="" width="30" height="30"/>
                           </a>
 
